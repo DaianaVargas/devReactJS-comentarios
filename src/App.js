@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { throws } from 'assert';
+import Comments from './Comments';
+import NewComment from './NewComment'
 
 class App extends Component {
   state = {
-    newComment: { content: '', date: '' },
     comments: [
       { content: "comentário 1", date: new Date() },
       { content: "comentário 2", date: new Date() },
@@ -11,37 +11,17 @@ class App extends Component {
     ]
   }
 
-  sendComment = () => {
+  sendComment = (newComment) => {
     this.setState({
-      comments: [...this.state.comments, this.state.newComment],
-      newComment: ''
-    })
-  }
-
-  handleChange = event => {
-    this.setState({
-      newComment: { content: event.target.value, date: new Date() }
+      comments: [...this.state.comments, newComment],
     })
   }
 
   render() {
     return (
       <div className="App">
-        {/* NewComments */}
-        <div>
-          <textarea value={this.state.newComment.content} onChange={this.handleChange}></textarea>
-          <button onClick={this.sendComment}>Enviar</button>
-        </div>
-        {/* Comments */}
-        <div>
-          {/* Comment */}
-          { this.state.comments.map( comment => {
-            return <div>
-                    <div>{comment.content}</div>
-                    <div>{comment.date.toLocaleString()}</div>
-                  </div>
-          })}
-        </div>
+        <NewComment sendComment={this.sendComment} />
+        <Comments comments={this.state.comments} />
       </div>
     );
   }
