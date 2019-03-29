@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 
 class Comment extends Component {
     render(){
+        const { comment } = this.props
         return (
             <div>
-                {/* <div>{JSON.stringify(this.props)}</div>  */}
+                {/* <div>{JSON.stringify(this.props.comment)}</div>  */}
                 
-                <div>{this.props.comment.content}</div>
-                <div>{this.props.comment.date.toLocaleString()}</div>
+                <div>Comentário: {comment.content}</div>
+                <div>Criação: {comment.date}</div>
+                <br/>
             </div>
         )
     }

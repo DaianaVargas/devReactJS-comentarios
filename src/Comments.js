@@ -3,9 +3,10 @@ import Comment from './Comment'
 
 class Comments extends Component {
     render(){
+        const keys = Object.keys(this.props.comments)
         return (
             <div>
-                { this.props.comments.map( comment => <Comment comment={comment} />)}
+                { keys.map( key => <Comment key={key} comment={this.props.comments[key]} /> )}
             </div>
         )
     }
