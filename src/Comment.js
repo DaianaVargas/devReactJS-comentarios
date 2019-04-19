@@ -10,12 +10,20 @@ const Comment = ({comment}) => {
         c = comment
     }
 
+    const dataFormat = c.date ? (new Date(c.date)).toLocaleDateString() : ''
+
     return (
-        <div>
+        <div align="center" style={{ maxWidth:400,
+            margin: 'auto',
+            width: '100%',}}>
             {/* <div>{JSON.stringify(this.props.comment)}</div>  */}
             
-            <div>Comentário: {c.content}</div>
-            <div>Criação: {c.date}</div>
+            <div style={{
+                backgroundColor:'LightGray', padding:10
+            }}>
+                <div style={{fontFamily:'verdana', fontSize:14}}>Comentário: {c.content}</div>
+                <div style={{fontFamily:'verdana', fontSize:12}}>Criação: {dataFormat}</div>
+            </div>            
             <br/>
         </div>
     )

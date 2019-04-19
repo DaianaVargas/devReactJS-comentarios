@@ -20,9 +20,23 @@ class NewComment extends Component {
 
     render(){
         return(
-            <div>
-                <textarea value={this.state.newComment.content} onChange={this.handleChange}></textarea>
-                <button onClick={this.sendComment}>Enviar</button>
+            <div align="center">
+                <textarea 
+                    value={this.state.newComment.content} 
+                    onChange={this.handleChange}
+                    rows={6}
+                    cols={55}></textarea>
+                <br />
+                <button onClick={this.sendComment}
+                    style={{backgroundColor: 'Gray',
+                        // border: 'none',
+                        color: 'white',//DodgerBlue
+                        padding: 15,
+                        textAlign: 'center',
+                        fontSize: 16,
+                        cursor: 'pointer',
+                        width: 200,
+                        marginBottom:10}}>Enviar</button>
             </div>
         )
     }

@@ -28,6 +28,9 @@ class App extends Component {
   }
 
   sendComment = (newComment) => {
+    if (!newComment.content) {
+      return
+    }
     const { database } = this.props
     const id = database.ref().child('comments').push().key
     
@@ -48,11 +51,26 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" style={{
+        margin: 'auto',
+        width: '50%',
+      }}>
+          <p style={{
+            fontFamily:'verdana', 
+            fontSize:18,
+            fontWeight:'bold',
+            textAlign:'center',
+          }}>Insira o seu comentário: </p>
         <NewComment sendComment={this.sendComment} />
         <Comments comments={this.state.comments} />
         {
-          this.state.isLoading && <p>Carregando ... </p>
+          this.state.isLoading && 
+          <p style={{
+            fontFamily:'verdana', 
+            fontSize:18,
+            fontWeight:'bold',
+            textAlign:'center',
+          }}>Carregando ... </p>
         }
       </div>
     );
